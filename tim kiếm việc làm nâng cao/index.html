@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Giao Diện Tìm Kiếm Việc Làm</title>
+    <link rel="stylesheet" href="styles.css">
+    </head>
+<body>
+
+    <div class="container">
+        <div class="search-bar">
+            <div class="input-group">
+                <label for="keyword">🔑 Từ khóa</label>
+                <input type="text" id="keyword" placeholder="Nhập vị trí, công việc, kĩ năng...">
+            </div>
+            <div class="input-group">
+                <label for="location">📍 Địa điểm</label>
+                <input type="text" id="location" placeholder="Thành phố, Quốc gia...">
+            </div>
+            <button class="search-button">tìm kiếm</button>
+        </div>
+
+        <div class="main-content">
+            <div class="filter-panel">
+                <div class="filter-header">
+                    <h3>Bộ lọc</h3>
+                    <button class="clear-filters">Xóa tất cả</button>
+                </div>
+
+                <h4>Loại hình công việc:</h4>
+                <div class="filter-group job-type">
+                    <button class="filter-tag selected">Toàn thời gian</button>
+                    <button class="filter-tag">Bán thời gian</button>
+                    <button class="filter-tag">Làm việc từ xa</button>
+                    <button class="filter-tag">Hợp đồng</button>
+                </div>
+                
+                <h4>Cấp độ kinh nghiệm:</h4>
+                <div class="filter-group experience-level">
+                    <button class="filter-tag selected">Thực tập sinh</button>
+                    <button class="filter-tag">Junior (0-2năm)</button>
+                    <button class="filter-tag">Junior (0-3năm)</button>
+                    <button class="filter-tag">Senior (5+năm)</button>
+                </div>
+
+                <h4>Mức lương (triệu VND)</h4>
+                <div class="filter-group salary-range">
+                    <button class="filter-tag">Dưới 10 triệu</button>
+                    <button class="filter-tag selected">10-20 triệu</button>
+                    <button class="filter-tag">trên 30 triệu</button>
+                </div>
+            </div>
+
+            <div class="results-panel">
+                <div class="results-header">
+                    <h3>Tìm thấy **12 công việc**</h3>
+                    <div class="sort-by">
+                        <span>Sắp xếp:</span>
+                        <select name="sort" id="sort-jobs">
+                            <option value="best-match">Phù hợp nhất</option>
+                            <option value="newest">Mới nhất</option>
+                        </select>
+                        <span class="sort-icon">↓</span> 
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="card-header">
+                        <h2>Senior Frontend Developer</h2>
+                        <span class="heart-icon">♡</span>
+                    </div>
+                    <p class="company-name">Tech solution Viet Nam</p>
+                    <div class="job-tags">
+                        <span class="tag full-time">Toàn thời gian</span>
+                        <span class="tag senior-level">Senior</span>
+                        <span class="tag location-tag">📍 Hà Nội</span>
+                    </div>
+                    <div class="salary-range">💰 **25-35 triệu**</div>
+                    <p class="description">Chúng tôi đang tìm kiếm một Senior Frontend Developer có kinh nghiệm để tham gia đội ngũ phát triển sản phẩm của chúng tôi, bạn sẽ được làm việc với những công cụ hiện đại</p>
+                    <div class="card-footer">
+                        <span class="posted-time">⏰ 2 ngày trước</span>
+                        <button class="detail-button">Xem chi tiết</button>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="card-header">
+                        <h2>Marketing Manager</h2>
+                        <span class="heart-icon">♡</span>
+                    </div>
+                    <p class="company-name">Digital Marketing Pro</p>
+                    <div class="job-tags">
+                        <span class="tag full-time">Toàn thời gian</span>
+                        <span class="tag middle-level">Middel</span>
+                        <span class="tag location-tag">📍 TP Đà Nẵng</span>
+                    </div>
+                    <div class="salary-range">💰 **20-28 triệu**</div>
+                    <p class="description">Tìm kiếm Marketing Manager có kinh nghiệm để lãnh đạo các chiến dịch marketing số và phát triển thương hiệu cho các khách hàng lớn</p>
+                    <div class="card-footer">
+                        <span class="posted-time">⏰ 2 ngày trước</span>
+                        <button class="detail-button">Xem chi tiết</button>
+                    </div>
+                </div>
+                
+                </div>
+        </div>
+    </div>
+
+</body>
+</html>timkiem
