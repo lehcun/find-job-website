@@ -3,9 +3,424 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Personal Portfolio Builder</title>
+    <script src="/_sdk/data_sdk.js"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        box-sizing: border-box;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      .card-shadow {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease;
+      }
+
+      .card-shadow:hover {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        transform: translateY(-2px);
+      }
+
+      .progress-bar {
+        transition: width 0.5s ease;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+      }
+
+      .btn-secondary {
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background-color: #f3f4f6;
+      }
+
+      .input-field {
+        transition: all 0.3s ease;
+      }
+
+      .input-field:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+
+      .template-card {
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .template-card.selected {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+      }
+
+      .skill-tag {
+        transition: all 0.2s ease;
+      }
+
+      .skill-tag:hover {
+        transform: scale(1.05);
+      }
+
+      .toast {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        background: white;
+        padding: 16px 24px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        display: none;
+        z-index: 1000;
+        animation: slideIn 0.3s ease;
+      }
+
+      .toast.show {
+        display: block;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(400px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .modal-overlay {
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+      }
+
+      .fade-in {
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+    <style>
+      @view-transition {
+        navigation: auto;
+      }
+    </style>
   </head>
-  <body>
-    <h2>Hello ae</h2>
+  <body class="min-h-full bg-gray-50">
+    <div id="app" class="min-h-full">
+      <!-- Header -->
+      <header class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <h1 id="main-title" class="text-3xl font-bold text-gray-900">
+                Build Your Professional Portfolio
+              </h1>
+              <p id="subtitle" class="text-gray-600 mt-1">
+                Create, customize, and share your portfolio in minutes
+              </p>
+            </div>
+            <div class="flex gap-3">
+              <button
+                id="preview-btn"
+                class="btn-secondary px-6 py-3 rounded-lg font-medium text-gray-700 bg-white border border-gray-300"
+              >
+                👁️ Preview
+              </button>
+              <button
+                id="export-btn"
+                class="btn-secondary px-6 py-3 rounded-lg font-medium text-gray-700 bg-white border border-gray-300"
+              >
+                📄 Export PDF
+              </button>
+            </div>
+          </div>
+          <!-- Progress Bar -->
+          <div class="mt-6">
+            <div class="flex justify-between text-sm text-gray-600 mb-2">
+              <span>Portfolio Completion</span>
+              <span id="progress-text">0%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div
+                id="progress-bar"
+                class="progress-bar gradient-bg h-2 rounded-full"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Main Content -->
+      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Left Column - Profile & Info -->
+          <div class="lg:col-span-2 space-y-6">
+            <!-- Personal Information Card -->
+            <div class="bg-white rounded-xl card-shadow p-6">
+              <div class="flex items-center justify-between mb-6">
+                <h2
+                  id="profile-section-title"
+                  class="text-xl font-bold text-gray-900"
+                >
+                  👤 Personal Information
+                </h2>
+                <button
+                  id="add-profile-btn"
+                  class="btn-primary text-white px-4 py-2 rounded-lg font-medium text-sm"
+                >
+                  + Add Info
+                </button>
+              </div>
+              <div id="profile-content" class="space-y-4">
+                <div class="text-center py-8 text-gray-500">
+                  <div class="text-6xl mb-4">📝</div>
+                  <p>Click "Add Info" to start building your profile</p>
+                </div>
+              </div>
+            </div>
+            <!-- Education Card -->
+            <div class="bg-white rounded-xl card-shadow p-6">
+              <div class="flex items-center justify-between mb-6">
+                <h2
+                  id="education-section-title"
+                  class="text-xl font-bold text-gray-900"
+                >
+                  🎓 Education
+                </h2>
+                <button
+                  id="add-education-btn"
+                  class="btn-primary text-white px-4 py-2 rounded-lg font-medium text-sm"
+                >
+                  + Add Education
+                </button>
+              </div>
+              <div id="education-list" class="space-y-4">
+                <div class="text-center py-8 text-gray-500">
+                  <div class="text-6xl mb-4">🎓</div>
+                  <p>Add your educational background</p>
+                </div>
+              </div>
+            </div>
+            <!-- Work Experience Card -->
+            <div class="bg-white rounded-xl card-shadow p-6">
+              <div class="flex items-center justify-between mb-6">
+                <h2
+                  id="experience-section-title"
+                  class="text-xl font-bold text-gray-900"
+                >
+                  💼 Work Experience
+                </h2>
+                <button
+                  id="add-experience-btn"
+                  class="btn-primary text-white px-4 py-2 rounded-lg font-medium text-sm"
+                >
+                  + Add Experience
+                </button>
+              </div>
+              <div id="experience-list" class="space-y-4">
+                <div class="text-center py-8 text-gray-500">
+                  <div class="text-6xl mb-4">💼</div>
+                  <p>Add your work experience</p>
+                </div>
+              </div>
+            </div>
+            <!-- Skills Card -->
+            <div class="bg-white rounded-xl card-shadow p-6">
+              <div class="flex items-center justify-between mb-6">
+                <h2
+                  id="skills-section-title"
+                  class="text-xl font-bold text-gray-900"
+                >
+                  ⚡ Skills &amp; Expertise
+                </h2>
+                <button
+                  id="add-skill-btn"
+                  class="btn-primary text-white px-4 py-2 rounded-lg font-medium text-sm"
+                >
+                  + Add Skill
+                </button>
+              </div>
+              <div id="skills-list" class="flex flex-wrap gap-2">
+                <div class="w-full text-center py-8 text-gray-500">
+                  <div class="text-6xl mb-4">⚡</div>
+                  <p>Add your skills and expertise</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Right Column - Templates & Actions -->
+          <div class="space-y-6">
+            <!-- Quick Actions Card -->
+            <div class="bg-white rounded-xl card-shadow p-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">
+                🚀 Quick Actions
+              </h3>
+              <div class="space-y-3">
+                <button
+                  id="create-portfolio-btn"
+                  class="w-full btn-primary text-white px-4 py-3 rounded-lg font-medium"
+                >
+                  ✨ Create Portfolio
+                </button>
+                <button
+                  id="edit-portfolio-btn"
+                  class="w-full btn-secondary px-4 py-3 rounded-lg font-medium text-gray-700 bg-gray-100"
+                >
+                  ✏️ Edit Portfolio
+                </button>
+              </div>
+            </div>
+            <!-- Template Selection Card -->
+            <div class="bg-white rounded-xl card-shadow p-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">
+                🎨 Choose Template
+              </h3>
+              <div class="space-y-3">
+                <div
+                  class="template-card border-2 border-gray-200 rounded-lg p-4 selected"
+                  data-template="modern"
+                >
+                  <div class="font-semibold text-gray-900 mb-1">Modern</div>
+                  <div class="text-sm text-gray-600">
+                    Clean and minimal design
+                  </div>
+                </div>
+                <div
+                  class="template-card border-2 border-gray-200 rounded-lg p-4"
+                  data-template="creative"
+                >
+                  <div class="font-semibold text-gray-900 mb-1">Creative</div>
+                  <div class="text-sm text-gray-600">
+                    Bold and colorful layout
+                  </div>
+                </div>
+                <div
+                  class="template-card border-2 border-gray-200 rounded-lg p-4"
+                  data-template="professional"
+                >
+                  <div class="font-semibold text-gray-900 mb-1">
+                    Professional
+                  </div>
+                  <div class="text-sm text-gray-600">Corporate and elegant</div>
+                </div>
+              </div>
+            </div>
+            <!-- Stats Card -->
+            <div class="bg-white rounded-xl card-shadow p-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">
+                📊 Portfolio Stats
+              </h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Total Items</span>
+                  <span id="total-items" class="font-bold text-gray-900"
+                    >0</span
+                  >
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Education</span>
+                  <span id="education-count" class="font-bold text-gray-900"
+                    >0</span
+                  >
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Experience</span>
+                  <span id="experience-count" class="font-bold text-gray-900"
+                    >0</span
+                  >
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Skills</span>
+                  <span id="skills-count" class="font-bold text-gray-900"
+                    >0</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <!-- Add Item Modal -->
+    <div
+      id="modal"
+      class="fixed inset-0 modal-overlay hidden items-center justify-center z-50"
+      style="display: none"
+    >
+      <div
+        class="bg-white rounded-xl shadow-2xl max-w-2xl w-full mx-4 max-h-[90%] overflow-y-auto fade-in"
+      >
+        <div class="p-6 border-b border-gray-200">
+          <div class="flex items-center justify-between">
+            <h3 id="modal-title" class="text-2xl font-bold text-gray-900">
+              Add Item
+            </h3>
+            <button
+              id="modal-close"
+              class="text-gray-400 hover:text-gray-600 text-2xl"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+        <form id="item-form" class="p-6 space-y-4">
+          <input type="hidden" id="item-section" value="" />
+          <div id="form-fields">
+            <!-- Dynamic form fields will be inserted here -->
+          </div>
+          <div class="flex gap-3 pt-4">
+            <button
+              type="submit"
+              id="save-item-btn"
+              class="flex-1 btn-primary text-white px-6 py-3 rounded-lg font-medium"
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              id="cancel-btn"
+              class="flex-1 btn-secondary px-6 py-3 rounded-lg font-medium text-gray-700 bg-gray-100"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+      <div class="flex items-center gap-3">
+        <span id="toast-icon" class="text-2xl">✅</span>
+        <span id="toast-message" class="font-medium text-gray-900"></span>
+      </div>
+    </div>
   </body>
 </html>
