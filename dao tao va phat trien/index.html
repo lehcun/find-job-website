@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="vi">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đào Tạo &amp; Phát Triển</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        
+        html {
+            height: 100%;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+        
+        .skill-badge {
+            transition: all 0.2s ease;
+        }
+        
+        .skill-badge:hover {
+            transform: scale(1.05);
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="min-h-full">
+  <div id="app" class="min-h-full flex flex-col" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"><!-- Header -->
+   <header class="text-white py-8 px-6">
+    <div class="max-w-7xl mx-auto">
+     <h1 id="main-title" class="text-5xl font-bold mb-3">Đào Tạo &amp; Phát Triển Nghề Nghiệp</h1>
+     <p id="subtitle" class="text-xl opacity-90">Nâng cao kỹ năng, mở rộng cơ hội việc làm của bạn</p>
+    </div>
+   </header><!-- Main Content -->
+   <main class="flex-1 px-6 pb-8">
+    <div class="max-w-7xl mx-auto"><!-- Stats Overview -->
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div class="bg-white rounded-xl p-6 shadow-lg">
+       <div class="flex items-center justify-between">
+        <div>
+         <p class="text-gray-600 text-sm font-medium">Khóa Học Đã Hoàn Thành</p>
+         <p class="text-3xl font-bold text-purple-600 mt-2">12</p>
+        </div>
+        <div class="text-4xl">
+         📚
+        </div>
+       </div>
+      </div>
+      <div class="bg-white rounded-xl p-6 shadow-lg">
+       <div class="flex items-center justify-between">
+        <div>
+         <p class="text-gray-600 text-sm font-medium">Chứng Chỉ Đạt Được</p>
+         <p class="text-3xl font-bold text-purple-600 mt-2">8</p>
+        </div>
+        <div class="text-4xl">
+         🏆
+        </div>
+       </div>
+      </div>
+      <div class="bg-white rounded-xl p-6 shadow-lg">
+       <div class="flex items-center justify-between">
+        <div>
+         <p class="text-gray-600 text-sm font-medium">Giờ Học Tập</p>
+         <p class="text-3xl font-bold text-purple-600 mt-2">245</p>
+        </div>
+        <div class="text-4xl">
+         ⏱️
+        </div>
+       </div>
+      </div>
+     </div><!-- Course Categories -->
+     <div class="mb-8">
+      <h2 class="text-2xl font-bold text-white mb-4">Danh Mục Khóa Học</h2>
+      <div class="flex flex-wrap gap-3"><button class="skill-badge bg-white text-purple-700 px-5 py-2 rounded-full font-semibold shadow-md hover:bg-purple-50"> 💻 Công Nghệ Thông Tin </button> <button class="skill-badge bg-white text-purple-700 px-5 py-2 rounded-full font-semibold shadow-md hover:bg-purple-50"> 📊 Quản Lý Dự Án </button> <button class="skill-badge bg-white text-purple-700 px-5 py-2 rounded-full font-semibold shadow-md hover:bg-purple-50"> 🎨 Thiết Kế Đồ Họa </button> <button class="skill-badge bg-white text-purple-700 px-5 py-2 rounded-full font-semibold shadow-md hover:bg-purple-50"> 💼 Kinh Doanh </button> <button class="skill-badge bg-white text-purple-700 px-5 py-2 rounded-full font-semibold shadow-md hover:bg-purple-50"> 🗣️ Kỹ Năng Mềm </button> <button class="skill-badge bg-white text-purple-700 px-5 py-2 rounded-full font-semibold shadow-md hover:bg-purple-50"> 📈 Marketing Digital </button> <button class="skill-badge bg-white text-purple-700 px-5 py-2 rounded-full font-semibold shadow-md hover:bg-purple-50"> 💰 Tài Chính Kế Toán </button> <button class="skill-badge bg-white text-purple-700 px-5 py-2 rounded-full font-semibold shadow-md hover:bg-purple-50"> 🏥 Y Tế Sức Khỏe </button> <button class="skill-badge bg-white text-purple-700 px-5 py-2 rounded-full font-semibold shadow-md hover:bg-purple-50"> 🌍 Ngoại Ngữ </button> <button class="skill-badge bg-white text-purple-700 px-5 py-2 rounded-full font-semibold shadow-md hover:bg-purple-50"> 🔧 Kỹ Thuật Công Nghiệp </button> <button class="skill-badge bg-white text-purple-700 px-5 py-2 rounded-full font-semibold shadow-md hover:bg-purple-50"> 📚 Giáo Dục Đào Tạo </button> <button class="skill-badge bg-white text-purple-700 px-5 py-2 rounded-full font-semibold shadow-md hover:bg-purple-50"> 🎬 Truyền Thông Media </button> <button class="skill-badge bg-white text-purple-700 px-5 py-2 rounded-full font-semibold shadow-md hover:bg-purple-50"> 🏗️ Xây Dựng Kiến Trúc </button>
+      </div>
+     </div><!-- Featured Courses -->
+     <div class="mb-8">
+      <h2 class="text-2xl font-bold text-white mb-4">Khóa Học Nổi Bật</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6"><!-- Course Card 1 -->
+       <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+        <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center"><span class="text-7xl">💻</span>
+        </div>
+        <div class="p-6">
+         <div class="flex items-center justify-between mb-3"><span class="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">Công Nghệ</span> <span class="text-yellow-500 text-sm">⭐ 4.8</span>
+         </div>
+         <h3 id="course-title-1" class="text-xl font-bold text-gray-800 mb-2">Lập Trình Web Full Stack</h3>
+         <p class="text-gray-600 text-sm mb-4">Học HTML, CSS, JavaScript, React và Node.js từ cơ bản đến nâng cao</p>
+         <div class="mb-4">
+          <div class="flex justify-between text-sm text-gray-600 mb-1"><span>Tiến độ</span> <span>65%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2">
+           <div class="progress-bar bg-blue-600 h-2 rounded-full" style="width: 65%"></div>
+          </div>
+         </div>
+         <div class="flex gap-2"><button id="enroll-btn-1" class="flex-1 bg-purple-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-purple-700 transition"> Tiếp Tục Học </button> <button id="view-btn-1" class="bg-gray-100 text-gray-700 py-2 px-4 rounded-lg font-semibold hover:bg-gray-200 transition"> Chi Tiết </button>
+         </div>
+        </div>
+       </div><!-- Course Card 2 -->
+       <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+        <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center"><span class="text-7xl">📊</span>
+        </div>
+        <div class="p-6">
+         <div class="flex items-center justify-between mb-3"><span class="bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">Quản Lý</span> <span class="text-yellow-500 text-sm">⭐ 4.9</span>
+         </div>
+         <h3 id="course-title-2" class="text-xl font-bold text-gray-800 mb-2">Quản Lý Dự Án Agile</h3>
+         <p class="text-gray-600 text-sm mb-4">Nắm vững phương pháp Scrum, Kanban và các công cụ quản lý hiện đại</p>
+         <div class="mb-4">
+          <div class="flex justify-between text-sm text-gray-600 mb-1"><span>Tiến độ</span> <span>30%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2">
+           <div class="progress-bar bg-green-600 h-2 rounded-full" style="width: 30%"></div>
+          </div>
+         </div>
+         <div class="flex gap-2"><button id="enroll-btn-2" class="flex-1 bg-purple-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-purple-700 transition"> Tiếp Tục Học </button> <button id="view-btn-2" class="bg-gray-100 text-gray-700 py-2 px-4 rounded-lg font-semibold hover:bg-gray-200 transition"> Chi Tiết </button>
+         </div>
+        </div>
+       </div><!-- Course Card 3 -->
+       <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+        <div class="h-48 bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center"><span class="text-7xl">🎨</span>
+        </div>
+        <div class="p-6">
+         <div class="flex items-center justify-between mb-3"><span class="bg-pink-100 text-pink-700 text-xs font-semibold px-3 py-1 rounded-full">Thiết Kế</span> <span class="text-yellow-500 text-sm">⭐ 4.7</span>
+         </div>
+         <h3 id="course-title-3" class="text-xl font-bold text-gray-800 mb-2">UI/UX Design Chuyên Nghiệp</h3>
+         <p class="text-gray-600 text-sm mb-4">Thiết kế giao diện người dùng đẹp mắt và trải nghiệm tối ưu</p>
+         <div class="mb-4">
+          <div class="flex justify-between text-sm text-gray-600 mb-1"><span>Tiến độ</span> <span>0%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2">
+           <div class="progress-bar bg-pink-600 h-2 rounded-full" style="width: 0%"></div>
+          </div>
+         </div>
+         <div class="flex gap-2"><button id="enroll-btn-3" class="flex-1 bg-purple-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-purple-700 transition"> Bắt Đầu Học </button> <button id="view-btn-3" class="bg-gray-100 text-gray-700 py-2 px-4 rounded-lg font-semibold hover:bg-gray-200 transition"> Chi Tiết </button>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Learning Path -->
+     <div class="bg-white rounded-xl p-6 shadow-lg">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Lộ Trình Phát Triển Của Bạn</h2>
+      <div class="space-y-4">
+       <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
+         ✓
+        </div>
+        <div class="flex-1">
+         <h3 class="font-semibold text-gray-800">Kỹ Năng Cơ Bản</h3>
+         <p class="text-sm text-gray-600">Hoàn thành 5 khóa học nền tảng</p>
+        </div>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+         2
+        </div>
+        <div class="flex-1">
+         <h3 class="font-semibold text-gray-800">Kỹ Năng Trung Cấp</h3>
+         <p class="text-sm text-gray-600">Đang học 3/7 khóa học</p>
+        </div>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center text-gray-600 font-bold">
+         3
+        </div>
+        <div class="flex-1">
+         <h3 class="font-semibold text-gray-400">Kỹ Năng Nâng Cao</h3>
+         <p class="text-sm text-gray-400">Mở khóa sau khi hoàn thành cấp 2</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </main>
+  </div>
+  <script>
+        const defaultConfig = {
+            main_title: "Đào Tạo & Phát Triển Nghề Nghiệp",
+            subtitle: "Nâng cao kỹ năng, mở rộng cơ hội việc làm của bạn",
+            course_title_1: "Lập Trình Web Full Stack",
+            course_title_2: "Quản Lý Dự Án Agile",
+            course_title_3: "UI/UX Design Chuyên Nghiệp",
+            enroll_button_text: "Tiếp Tục Học",
+            view_button_text: "Chi Tiết",
+            background_color: "#667eea",
+            surface_color: "#ffffff",
+            text_color: "#1f2937",
+            primary_action_color: "#9333ea",
+            secondary_action_color: "#f3f4f6",
+            font_family: "system-ui",
+            font_size: 16
+        };
+
+        async function onConfigChange(config) {
+            const mainTitle = config.main_title || defaultConfig.main_title;
+            const subtitle = config.subtitle || defaultConfig.subtitle;
+            const courseTitle1 = config.course_title_1 || defaultConfig.course_title_1;
+            const courseTitle2 = config.course_title_2 || defaultConfig.course_title_2;
+            const courseTitle3 = config.course_title_3 || defaultConfig.course_title_3;
+            const enrollButtonText = config.enroll_button_text || defaultConfig.enroll_button_text;
+            const viewButtonText = config.view_button_text || defaultConfig.view_button_text;
+            
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const surfaceColor = config.surface_color || defaultConfig.surface_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+            const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+            
+            const customFont = config.font_family || defaultConfig.font_family;
+            const baseFontSize = config.font_size || defaultConfig.font_size;
+            const baseFontStack = 'system-ui, -apple-system, sans-serif';
+
+            document.getElementById('main-title').textContent = mainTitle;
+            document.getElementById('subtitle').textContent = subtitle;
+            document.getElementById('course-title-1').textContent = courseTitle1;
+            document.getElementById('course-title-2').textContent = courseTitle2;
+            document.getElementById('course-title-3').textContent = courseTitle3;
+            
+            document.getElementById('enroll-btn-1').textContent = enrollButtonText;
+            document.getElementById('enroll-btn-2').textContent = enrollButtonText;
+            document.getElementById('enroll-btn-3').textContent = "Bắt Đầu Học";
+            
+            document.getElementById('view-btn-1').textContent = viewButtonText;
+            document.getElementById('view-btn-2').textContent = viewButtonText;
+            document.getElementById('view-btn-3').textContent = viewButtonText;
+
+            document.getElementById('app').style.background = `linear-gradient(135deg, ${backgroundColor} 0%, #764ba2 100%)`;
+            
+            const cards = document.querySelectorAll('.bg-white');
+            cards.forEach(card => {
+                card.style.backgroundColor = surfaceColor;
+            });
+            
+            const textElements = document.querySelectorAll('.text-gray-800, .text-gray-600, h3, p');
+            textElements.forEach(el => {
+                if (el.classList.contains('text-gray-800')) {
+                    el.style.color = textColor;
+                }
+            });
+            
+            const primaryButtons = document.querySelectorAll('[id^="enroll-btn"]');
+            primaryButtons.forEach(btn => {
+                btn.style.backgroundColor = primaryActionColor;
+            });
+            
+            const secondaryButtons = document.querySelectorAll('[id^="view-btn"]');
+            secondaryButtons.forEach(btn => {
+                btn.style.backgroundColor = secondaryActionColor;
+            });
+
+            document.getElementById('main-title').style.fontFamily = `${customFont}, ${baseFontStack}`;
+            document.getElementById('subtitle').style.fontFamily = `${customFont}, ${baseFontStack}`;
+            document.getElementById('course-title-1').style.fontFamily = `${customFont}, ${baseFontStack}`;
+            document.getElementById('course-title-2').style.fontFamily = `${customFont}, ${baseFontStack}`;
+            document.getElementById('course-title-3').style.fontFamily = `${customFont}, ${baseFontStack}`;
+
+            document.getElementById('main-title').style.fontSize = `${baseFontSize * 2}px`;
+            document.getElementById('subtitle').style.fontSize = `${baseFontSize * 1.25}px`;
+            document.getElementById('course-title-1').style.fontSize = `${baseFontSize * 1.25}px`;
+            document.getElementById('course-title-2').style.fontSize = `${baseFontSize * 1.25}px`;
+            document.getElementById('course-title-3').style.fontSize = `${baseFontSize * 1.25}px`;
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            config.background_color = value;
+                            window.elementSdk.setConfig({ background_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.surface_color || defaultConfig.surface_color,
+                        set: (value) => {
+                            config.surface_color = value;
+                            window.elementSdk.setConfig({ surface_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            config.text_color = value;
+                            window.elementSdk.setConfig({ text_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                        set: (value) => {
+                            config.primary_action_color = value;
+                            window.elementSdk.setConfig({ primary_action_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                        set: (value) => {
+                            config.secondary_action_color = value;
+                            window.elementSdk.setConfig({ secondary_action_color: value });
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: {
+                    get: () => config.font_family || defaultConfig.font_family,
+                    set: (value) => {
+                        config.font_family = value;
+                        window.elementSdk.setConfig({ font_family: value });
+                    }
+                },
+                fontSizeable: {
+                    get: () => config.font_size || defaultConfig.font_size,
+                    set: (value) => {
+                        config.font_size = value;
+                        window.elementSdk.setConfig({ font_size: value });
+                    }
+                }
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["main_title", config.main_title || defaultConfig.main_title],
+                ["subtitle", config.subtitle || defaultConfig.subtitle],
+                ["course_title_1", config.course_title_1 || defaultConfig.course_title_1],
+                ["course_title_2", config.course_title_2 || defaultConfig.course_title_2],
+                ["course_title_3", config.course_title_3 || defaultConfig.course_title_3],
+                ["enroll_button_text", config.enroll_button_text || defaultConfig.enroll_button_text],
+                ["view_button_text", config.view_button_text || defaultConfig.view_button_text]
+            ]);
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+
+        document.querySelectorAll('button[id^="enroll-btn"], button[id^="view-btn"]').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const btnText = this.textContent;
+                const originalText = btnText;
+                this.textContent = '✓ Đã nhấn!';
+                this.style.opacity = '0.7';
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.opacity = '1';
+                }, 1500);
+            });
+        });
+
+        document.querySelectorAll('.skill-badge').forEach(badge => {
+            badge.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.skill-badge').forEach(b => {
+                    b.style.backgroundColor = 'white';
+                    b.style.color = '#7c3aed';
+                });
+                this.style.backgroundColor = '#7c3aed';
+                this.style.color = 'white';
+            });
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0846af03fdd738',t:'MTc2MzQ3NzM4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
