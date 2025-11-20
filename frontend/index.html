@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý hồ sơ ứng viên</title>
+    <style>
+        body { font-family: Arial, sans-serif; background:#f5f5f5; margin:0; padding:20px;}
+        .container { background:#fff; padding:20px; border-radius:8px; }
+        .row { display:flex; gap:15px; margin-bottom:15px; flex-wrap:wrap; }
+        .col { display:flex; flex-direction:column; }
+        label { font-weight:bold; margin-bottom:5px; }
+        select, input { padding:7px; width:180px; }
+        .btn-group button {
+            padding:8px 16px; border:none; border-radius:5px; cursor:pointer;
+            margin-right:10px; color:white;
+        }
+        .btn-search { background:#007b5e; }
+        .btn-add    { background:#1e88e5; }
+        .btn-save   { background:#4caf50; }
+        .btn-del    { background:#d9534f; }
+
+        table { width:100%; border-collapse:collapse; margin-top:15px; }
+        th, td { padding:10px; border-bottom:1px solid #ddd; font-size:14px; text-align:left; }
+        th { background:#e0e0e0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- 1. MENU TRÁI -->
+    <h3>📌 Quản lý hồ sơ ứng viên</h3>
+    <p>Danh sách ứng viên</p>
+
+    <!-- 2–11: FORM LỌC -->
+    <div class="row">
+        <div class="col">
+            <label>Ứng viên</label>
+            <input type="text" placeholder="Tìm kiếm ứng viên">
+        </div>
+
+        <div class="col">
+            <label>Trình độ học vấn</label>
+            <select><option>Tất cả</option></select>
+        </div>
+
+        <div class="col">
+            <label>Kinh nghiệm làm</label>
+            <select><option>Tất cả</option></select>
+        </div>
+
+        <div class="col">
+            <label>Chức vụ</label>
+            <select><option>Tất cả</option></select>
+        </div>
+
+        <div class="col">
+            <label>Phòng ban</label>
+            <select><option>Tất cả</option></select>
+        </div>
+
+        <div class="col">
+            <label>Vị trí làm việc</label>
+            <select><option>Tất cả</option></select>
+        </div>
+
+        <div class="col">
+            <label>Tình trạng hợp đồng</label>
+            <select><option>Tất cả</option></select>
+        </div>
+
+        <div class="col">
+            <label>Trạng thái công việc</label>
+            <select><option>Tất cả</option></select>
+        </div>
+
+        <div class="col">
+            <label>Từ ngày</label>
+            <input type="date">
+        </div>
+
+        <div class="col">
+            <label>Đến ngày</label>
+            <input type="date">
+        </div>
+    </div>
+
+    <!-- 12. BUTTON -->
+    <div class="btn-group">
+        <button class="btn-search">🔍 Tìm kiếm</button>
+        <button class="btn-add">➕ Thêm mới</button>
+        <button class="btn-save">💾 Sao lưu</button>
+        <button class="btn-del">🗑 Xóa bỏ</button>
+    </div>
+
+    <!-- 13. BẢNG DANH SÁCH -->
+    <table>
+        <tr>
+            <th></th>
+            <th>Mã ứng viên</th>
+            <th>Họ và tên</th>
+            <th>Phòng ban</th>
+            <th>Ngày nộp hồ sơ</th>
+            <th>Hồ sơ ứng viên</th>
+            <th>Loại thử việc</th>
+        </tr>
+
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>00000001</td>
+            <td>Nguyễn Văn A</td>
+            <td>Maintenance</td>
+            <td>01/01/2025</td>
+            <td>SHD_VD0001</td>
+            <td>30 ngày</td>
+        </tr>
+
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>00000002</td>
+            <td>Trần Thị Bích</td>
+            <td>Maintenance</td>
+            <td>01/01/2025</td>
+            <td>SHD_VD0002</td>
+            <td>30 ngày</td>
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>
