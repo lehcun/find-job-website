@@ -118,7 +118,3 @@ Dự án được phát triển với mục đích học tập và portfolio.
 **Find Job Website – Tìm việc dễ dàng, tuyển dụng nhanh chóng!**
 
 Nếu bạn thấy dự án hữu ích, đừng quên cho 1 ⭐ nhé! 🚀
-
-```
-
-```
