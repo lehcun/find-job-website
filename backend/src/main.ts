@@ -1,5 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import * as dotenv from 'dotenv';
+
+dotenv.config(); // ← Load .env ngay từ đầu
+console.log('DATABASE_URL:', process.env.DATABASE_URL); // ← để debug
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

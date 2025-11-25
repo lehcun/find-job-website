@@ -1,6 +1,3 @@
-// Prisma schema for job platform (candidates + employers + admin)
-// Provider: MySQL (adjust datasource URL in .env)
-
 generator client {
   provider = "prisma-client-js"
 }

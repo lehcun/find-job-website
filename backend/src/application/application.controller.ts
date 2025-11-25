@@ -1,9 +1,11 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
+import { ApplicationService } from './application.service';
 
 @Controller('application')
 export class ApplicationController {
   constructor(private applicationService: ApplicationService) {}
 
+  @Get()
   async getAll() {
     return this.applicationService.findAll();
   }
