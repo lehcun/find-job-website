@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="vi">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanh toán và Quảng cáo - JobPortal</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
+        }
+
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+        }
+
+        .payment-method {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .payment-method:hover {
+            background-color: #f0f9ff;
+            border-color: #3b82f6;
+        }
+
+        .payment-method.selected {
+            background-color: #eff6ff;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn-primary {
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-buy {
+            transition: all 0.2s ease;
+        }
+
+        .btn-buy:hover {
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="min-h-full flex flex-col"><!-- Navigation Bar -->
+   <nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+     <div class="flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+       <svg class="w-10 h-10" viewbox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#3b82f6" /> <path d="M12 20L18 26L28 14" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+       </svg><span id="website-name" class="text-2xl font-bold" style="color: #1e40af;">JobPortal</span>
+      </div>
+      <div class="flex items-center space-x-4">
+       <svg class="w-10 h-10 p-2 rounded-full bg-blue-50 cursor-pointer hover:bg-blue-100 transition" viewbox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" />
+       </svg>
+      </div>
+     </div>
+    </div>
+   </nav><!-- Main Content -->
+   <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8"><!-- Left Section: Pricing Cards -->
+     <div class="lg:col-span-2 space-y-6">
+      <h1 class="text-3xl font-bold mb-6" style="color: #1e40af;">Chọn gói quảng cáo phù hợp</h1>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6"><!-- Basic Plan -->
+       <div class="pricing-card bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
+        <h3 id="basic-plan-name" class="text-xl font-bold mb-2" style="color: #1e40af;">Gói Cơ Bản</h3>
+        <div class="mb-4"><span class="text-4xl font-bold" style="color: #3b82f6;">500K</span> <span class="text-gray-500">/tháng</span>
+        </div>
+        <ul class="space-y-3 mb-6 text-gray-600">
+         <li class="flex items-start">
+          <svg class="w-5 h-5 mr-2 mt-0.5" fill="#3b82f6" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+          </svg><span>5 tin tuyển dụng</span></li>
+         <li class="flex items-start">
+          <svg class="w-5 h-5 mr-2 mt-0.5" fill="#3b82f6" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+          </svg><span>Hiển thị 7 ngày</span></li>
+         <li class="flex items-start">
+          <svg class="w-5 h-5 mr-2 mt-0.5" fill="#3b82f6" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+          </svg><span>Hỗ trợ email</span></li>
+        </ul><button class="btn-buy w-full py-3 rounded-xl font-semibold text-white" style="background-color: #3b82f6;" onclick="selectPlan('basic', 500000)"> Mua ngay </button>
+       </div><!-- Advanced Plan -->
+       <div class="pricing-card bg-white rounded-2xl p-6 shadow-xl border-2 relative" style="border-color: #3b82f6;">
+        <div class="popular-badge absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 rounded-full text-white text-sm font-semibold">
+         Phổ biến
+        </div>
+        <h3 id="advanced-plan-name" class="text-xl font-bold mb-2" style="color: #1e40af;">Gói Nâng Cao</h3>
+        <div class="mb-4"><span class="text-4xl font-bold" style="color: #3b82f6;">1.2M</span> <span class="text-gray-500">/tháng</span>
+        </div>
+        <ul class="space-y-3 mb-6 text-gray-600">
+         <li class="flex items-start">
+          <svg class="w-5 h-5 mr-2 mt-0.5" fill="#3b82f6" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+          </svg><span>15 tin tuyển dụng</span></li>
+         <li class="flex items-start">
+          <svg class="w-5 h-5 mr-2 mt-0.5" fill="#3b82f6" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+          </svg><span>Hiển thị 30 ngày</span></li>
+         <li class="flex items-start">
+          <svg class="w-5 h-5 mr-2 mt-0.5" fill="#3b82f6" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+          </svg><span>Ưu tiên hiển thị</span></li>
+         <li class="flex items-start">
+          <svg class="w-5 h-5 mr-2 mt-0.5" fill="#3b82f6" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+          </svg><span>Hỗ trợ 24/7</span></li>
+        </ul><button class="btn-buy w-full py-3 rounded-xl font-semibold text-white" style="background-color: #3b82f6;" onclick="selectPlan('advanced', 1200000)"> Mua ngay </button>
+       </div><!-- Premium Plan -->
+       <div class="pricing-card bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
+        <h3 id="premium-plan-name" class="text-xl font-bold mb-2" style="color: #1e40af;">Gói Cao Cấp</h3>
+        <div class="mb-4"><span class="text-4xl font-bold" style="color: #3b82f6;">2.5M</span> <span class="text-gray-500">/tháng</span>
+        </div>
+        <ul class="space-y-3 mb-6 text-gray-600">
+         <li class="flex items-start">
+          <svg class="w-5 h-5 mr-2 mt-0.5" fill="#3b82f6" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+          </svg><span>Không giới hạn tin</span></li>
+         <li class="flex items-start">
+          <svg class="w-5 h-5 mr-2 mt-0.5" fill="#3b82f6" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+          </svg><span>Hiển thị 60 ngày</span></li>
+         <li class="flex items-start">
+          <svg class="w-5 h-5 mr-2 mt-0.5" fill="#3b82f6" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+          </svg><span>Top đầu trang</span></li>
+         <li class="flex items-start">
+          <svg class="w-5 h-5 mr-2 mt-0.5" fill="#3b82f6" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+          </svg><span>Quản lý chuyên biệt</span></li>
+         <li class="flex items-start">
+          <svg class="w-5 h-5 mr-2 mt-0.5" fill="#3b82f6" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+          </svg><span>Báo cáo chi tiết</span></li>
+        </ul><button class="btn-buy w-full py-3 rounded-xl font-semibold text-white" style="background-color: #3b82f6;" onclick="selectPlan('premium', 2500000)"> Mua ngay </button>
+       </div>
+      </div><!-- Payment Methods -->
+      <div class="bg-white rounded-2xl p-6 shadow-lg mt-8">
+       <h2 id="payment-title" class="text-2xl font-bold mb-6" style="color: #1e40af;">Phương thức thanh toán</h2>
+       <div class="space-y-4">
+        <div class="payment-method border-2 border-gray-200 rounded-xl p-4 flex items-center" onclick="selectPaymentMethod(this, 'credit-card')">
+         <svg class="w-8 h-8 mr-4" viewbox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2" /> <line x1="1" y1="10" x2="23" y2="10" />
+         </svg>
+         <div class="flex-1">
+          <div class="font-semibold" style="color: #1e40af;">
+           Thẻ tín dụng / Ghi nợ
+          </div>
+          <div class="text-sm text-gray-500">
+           Visa, Mastercard, JCB
+          </div>
+         </div>
+         <div class="w-5 h-5 rounded-full border-2 border-gray-300"></div>
+        </div>
+        <div class="payment-method border-2 border-gray-200 rounded-xl p-4 flex items-center" onclick="selectPaymentMethod(this, 'e-wallet')">
+         <svg class="w-8 h-8 mr-4" viewbox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" /> <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" /> <path d="M18 12a2 2 0 0 0 0 4h4v-4Z" />
+         </svg>
+         <div class="flex-1">
+          <div class="font-semibold" style="color: #1e40af;">
+           Ví điện tử
+          </div>
+          <div class="text-sm text-gray-500">
+           MoMo, ZaloPay, VNPay
+          </div>
+         </div>
+         <div class="w-5 h-5 rounded-full border-2 border-gray-300"></div>
+        </div>
+        <div class="payment-method border-2 border-gray-200 rounded-xl p-4 flex items-center" onclick="selectPaymentMethod(this, 'paypal')">
+         <svg class="w-8 h-8 mr-4" viewbox="0 0 24 24" fill="#3b82f6"><path d="M8.32 21.97a.546.546 0 0 1-.26-.32c-.03-.15-.06-.3-.06-.45l.02-.14 1.29-8.23H6.25a.58.58 0 0 1-.42-.18.63.63 0 0 1-.16-.43c0-.15.05-.3.14-.42l.02-.02L11.69 2.4c.1-.14.25-.23.42-.23.15 0 .3.07.4.19.1.12.14.28.11.43l-1.23 7.68h3.07c.17 0 .33.08.43.21.1.13.13.3.09.46l-5.32 11.26c-.08.17-.23.28-.41.3h-.02c-.14 0-.27-.06-.36-.17-.09-.11-.13-.25-.1-.39l1.55-9.97z" />
+         </svg>
+         <div class="flex-1">
+          <div class="font-semibold" style="color: #1e40af;">
+           PayPal
+          </div>
+          <div class="text-sm text-gray-500">
+           Thanh toán quốc tế
+          </div>
+         </div>
+         <div class="w-5 h-5 rounded-full border-2 border-gray-300"></div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Right Section: Order Summary -->
+     <div class="lg:col-span-1">
+      <div class="bg-white rounded-2xl p-6 shadow-lg sticky top-8">
+       <h2 class="text-2xl font-bold mb-6" style="color: #1e40af;">Tổng đơn hàng</h2>
+       <div id="order-summary" class="space-y-4 mb-6">
+        <div class="text-center text-gray-400 py-8">
+         <svg class="w-16 h-16 mx-auto mb-3 opacity-50" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1" /> <circle cx="20" cy="21" r="1" /> <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+         </svg>
+         <p>Chọn gói quảng cáo để tiếp tục</p>
+        </div>
+       </div>
+       <div class="border-t-2 border-gray-100 pt-4 mb-6">
+        <div class="flex justify-between items-center mb-2"><span class="text-gray-600">Tạm tính:</span> <span id="subtotal" class="font-semibold" style="color: #1e40af;">0đ</span>
+        </div>
+        <div class="flex justify-between items-center mb-2"><span class="text-gray-600">VAT (10%):</span> <span id="vat" class="font-semibold" style="color: #1e40af;">0đ</span>
+        </div>
+        <div class="flex justify-between items-center text-xl font-bold mt-4"><span style="color: #1e40af;">Tổng cộng:</span> <span id="total" style="color: #3b82f6;">0đ</span>
+        </div>
+       </div><button id="confirm-btn" class="btn-primary w-full py-4 rounded-xl font-semibold text-white text-lg disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3b82f6;" onclick="confirmPayment()" disabled> <span id="confirm-button-text">Xác nhận thanh toán</span> </button>
+       <div class="mt-4 text-center text-sm text-gray-500">
+        <svg class="w-4 h-4 inline mr-1" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        </svg> Thanh toán an toàn &amp; bảo mật
+       </div>
+      </div>
+     </div>
+    </div>
+   </main>
+  </div>
+  <script>
+        const defaultConfig = {
+            website_name: "JobPortal",
+            basic_plan_name: "Gói Cơ Bản",
+            advanced_plan_name: "Gói Nâng Cao",
+            premium_plan_name: "Gói Cao Cấp",
+            payment_title: "Phương thức thanh toán",
+            confirm_button: "Xác nhận thanh toán",
+            background_color: "#f0f4ff",
+            surface_color: "#ffffff",
+            text_color: "#1e40af",
+            primary_action_color: "#3b82f6",
+            secondary_action_color: "#60a5fa"
+        };
+
+        let selectedPlanData = null;
+        let selectedPaymentMethod = null;
+
+        function selectPlan(planType, price) {
+            selectedPlanData = { planType, price };
+            updateOrderSummary();
+        }
+
+        function selectPaymentMethod(element, method) {
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('selected');
+                const radio = el.querySelector('.w-5.h-5');
+                radio.style.backgroundColor = 'transparent';
+                radio.style.borderColor = '#d1d5db';
+            });
+
+            element.classList.add('selected');
+            const radio = element.querySelector('.w-5.h-5');
+            radio.style.backgroundColor = window.elementSdk?.config?.primary_action_color || defaultConfig.primary_action_color;
+            radio.style.borderColor = window.elementSdk?.config?.primary_action_color || defaultConfig.primary_action_color;
+            
+            selectedPaymentMethod = method;
+            updateConfirmButton();
+        }
+
+        function updateOrderSummary() {
+            const summaryDiv = document.getElementById('order-summary');
+            const subtotalEl = document.getElementById('subtotal');
+            const vatEl = document.getElementById('vat');
+            const totalEl = document.getElementById('total');
+
+            if (selectedPlanData) {
+                const planNames = {
+                    basic: window.elementSdk?.config?.basic_plan_name || defaultConfig.basic_plan_name,
+                    advanced: window.elementSdk?.config?.advanced_plan_name || defaultConfig.advanced_plan_name,
+                    premium: window.elementSdk?.config?.premium_plan_name || defaultConfig.premium_plan_name
+                };
+
+                summaryDiv.innerHTML = `
+                    <div class="flex justify-between items-center p-4 bg-blue-50 rounded-xl">
+                        <div>
+                            <div class="font-semibold" style="color: ${window.elementSdk?.config?.text_color || defaultConfig.text_color};">${planNames[selectedPlanData.planType]}</div>
+                            <div class="text-sm text-gray-500">1 tháng</div>
+                        </div>
+                        <div class="font-bold" style="color: ${window.elementSdk?.config?.primary_action_color || defaultConfig.primary_action_color};">${formatCurrency(selectedPlanData.price)}</div>
+                    </div>
+                `;
+
+                const vat = selectedPlanData.price * 0.1;
+                const total = selectedPlanData.price + vat;
+
+                subtotalEl.textContent = formatCurrency(selectedPlanData.price);
+                vatEl.textContent = formatCurrency(vat);
+                totalEl.textContent = formatCurrency(total);
+            }
+
+            updateConfirmButton();
+        }
+
+        function updateConfirmButton() {
+            const confirmBtn = document.getElementById('confirm-btn');
+            confirmBtn.disabled = !(selectedPlanData && selectedPaymentMethod);
+        }
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+        }
+
+        function confirmPayment() {
+            if (!selectedPlanData || !selectedPaymentMethod) return;
+
+            const confirmBtn = document.getElementById('confirm-btn');
+            const originalText = confirmBtn.innerHTML;
+            
+            confirmBtn.disabled = true;
+            confirmBtn.innerHTML = '<span>Đang xử lý...</span>';
+
+            setTimeout(() => {
+                const successMessage = document.createElement('div');
+                successMessage.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl p-8 shadow-2xl text-center z-50';
+                successMessage.style.minWidth = '300px';
+                successMessage.innerHTML = `
+                    <svg class="w-16 h-16 mx-auto mb-4" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    <h3 class="text-2xl font-bold mb-2" style="color: #1e40af;">Thanh toán thành công!</h3>
+                    <p class="text-gray-600 mb-4">Gói quảng cáo của bạn đã được kích hoạt</p>
+                    <button onclick="this.parentElement.remove()" class="px-6 py-2 rounded-xl text-white font-semibold" style="background-color: #3b82f6;">
+                        Đóng
+                    </button>
+                `;
+                document.body.appendChild(successMessage);
+
+                confirmBtn.disabled = false;
+                confirmBtn.innerHTML = originalText;
+            }, 1500);
+        }
+
+        async function onConfigChange(config) {
+            const websiteName = document.getElementById('website-name');
+            const basicPlanName = document.getElementById('basic-plan-name');
+            const advancedPlanName = document.getElementById('advanced-plan-name');
+            const premiumPlanName = document.getElementById('premium-plan-name');
+            const paymentTitle = document.getElementById('payment-title');
+            const confirmButtonText = document.getElementById('confirm-button-text');
+
+            websiteName.textContent = config.website_name || defaultConfig.website_name;
+            basicPlanName.textContent = config.basic_plan_name || defaultConfig.basic_plan_name;
+            advancedPlanName.textContent = config.advanced_plan_name || defaultConfig.advanced_plan_name;
+            premiumPlanName.textContent = config.premium_plan_name || defaultConfig.premium_plan_name;
+            paymentTitle.textContent = config.payment_title || defaultConfig.payment_title;
+            confirmButtonText.textContent = config.confirm_button || defaultConfig.confirm_button;
+
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const surfaceColor = config.surface_color || defaultConfig.surface_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+            const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+
+            document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${adjustColorBrightness(backgroundColor, -10)} 100%)`;
+
+            document.querySelectorAll('.bg-white').forEach(el => {
+                el.style.backgroundColor = surfaceColor;
+            });
+
+            document.querySelectorAll('[style*="color: #1e40af"]').forEach(el => {
+                el.style.color = textColor;
+            });
+
+            document.querySelectorAll('[style*="color: #3b82f6"], [style*="background-color: #3b82f6"]').forEach(el => {
+                if (el.style.color) el.style.color = primaryActionColor;
+                if (el.style.backgroundColor) el.style.backgroundColor = primaryActionColor;
+            });
+
+            document.querySelectorAll('svg[fill="#3b82f6"], svg[stroke="#3b82f6"]').forEach(el => {
+                if (el.getAttribute('fill')) el.setAttribute('fill', primaryActionColor);
+                if (el.getAttribute('stroke')) el.setAttribute('stroke', primaryActionColor);
+            });
+
+            if (selectedPlanData) {
+                updateOrderSummary();
+            }
+        }
+
+        function adjustColorBrightness(color, percent) {
+            const num = parseInt(color.replace("#", ""), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = (num >> 16) + amt;
+            const G = (num >> 8 & 0x00FF) + amt;
+            const B = (num & 0x0000FF) + amt;
+            return "#" + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 +
+                (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 +
+                (B < 255 ? B < 1 ? 0 : B : 255))
+                .toString(16).slice(1);
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig: defaultConfig,
+                onConfigChange: onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                window.elementSdk.config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.surface_color || defaultConfig.surface_color,
+                            set: (value) => {
+                                window.elementSdk.config.surface_color = value;
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                window.elementSdk.config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                            set: (value) => {
+                                window.elementSdk.config.primary_action_color = value;
+                                window.elementSdk.setConfig({ primary_action_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                            set: (value) => {
+                                window.elementSdk.config.secondary_action_color = value;
+                                window.elementSdk.setConfig({ secondary_action_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: undefined,
+                    fontSizeable: undefined
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["website_name", config.website_name || defaultConfig.website_name],
+                    ["basic_plan_name", config.basic_plan_name || defaultConfig.basic_plan_name],
+                    ["advanced_plan_name", config.advanced_plan_name || defaultConfig.advanced_plan_name],
+                    ["premium_plan_name", config.premium_plan_name || defaultConfig.premium_plan_name],
+                    ["payment_title", config.payment_title || defaultConfig.payment_title],
+                    ["confirm_button", config.confirm_button || defaultConfig.confirm_button]
+                ])
+            });
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a4157c20021a978',t:'MTc2NDA3NTc3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
