@@ -1,12 +1,717 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Đánh giá &amp; Phản hồi</title>
+    <script src="/_sdk/element_sdk.js"></script>
+    <style>
+      body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+        min-height: 100%;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Header */
+      .header {
+        background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        padding: 1.2rem 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .logo {
+        width: 40px;
+        height: 40px;
+      }
+
+      .website-name {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-link {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        transition: background 0.3s ease;
+      }
+
+      .nav-link:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      /* Main Content */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+      }
+
+      .page-title {
+        text-align: center;
+        color: #1e293b;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+      }
+
+      /* Reviews Grid */
+      .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 4rem;
+      }
+
+      .review-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .review-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      }
+
+      .review-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+
+      .reviewer-info h3 {
+        margin: 0;
+        color: #1e293b;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .stars {
+        color: #fbbf24;
+        font-size: 1.1rem;
+        margin-top: 0.2rem;
+      }
+
+      .review-content {
+        color: #64748b;
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+
+      /* Feedback Form */
+      .feedback-form-section {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .form-title {
+        color: #1e293b;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-label {
+        display: block;
+        color: #475569;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+      }
+
+      .form-input,
+      .form-textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: inherit;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-input:focus,
+      .form-textarea:focus {
+        outline: none;
+        border-color: #3b82f6;
+      }
+
+      .form-textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .star-rating {
+        display: flex;
+        gap: 0.5rem;
+        font-size: 2rem;
+      }
+
+      .star-rating input {
+        display: none;
+      }
+
+      .star-rating label {
+        color: #cbd5e1;
+        cursor: pointer;
+        transition: color 0.2s ease;
+      }
+
+      .star-rating input:checked ~ label,
+      .star-rating label:hover,
+      .star-rating label:hover ~ label {
+        color: #fbbf24;
+      }
+
+      .submit-button {
+        width: 100%;
+        padding: 1rem;
+        background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .submit-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+      }
+
+      .submit-button:active {
+        transform: translateY(0);
+      }
+
+      /* Success Message */
+      .success-message {
+        display: none;
+        background: #10b981;
+        color: white;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .success-message.show {
+        display: block;
+      }
+
+      /* Footer */
+      .footer {
+        background: #1e293b;
+        color: white;
+        padding: 2rem 1.5rem;
+        margin-top: 4rem;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .social-link {
+        color: white;
+        text-decoration: none;
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+      }
+
+      .social-link:hover {
+        color: #3b82f6;
+      }
+
+      .copyright {
+        color: #94a3b8;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .nav-menu {
+          justify-content: center;
+        }
+
+        .page-title {
+          font-size: 2rem;
+        }
+
+        .reviews-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .feedback-form-section {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+    <style>
+      @view-transition {
+        navigation: auto;
+      }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+    <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
   </head>
   <body>
-    <h1>Cong Cuong</h1>
-    <h2>Danh gia va phan hoi</h2>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <div class="logo-section">
+          <svg
+            class="logo"
+            viewbox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="40" height="40" rx="8" fill="white" />
+            <path d="M20 10L28 16V28L20 34L12 28V16L20 10Z" fill="#2563eb" />
+            <circle cx="20" cy="20" r="4" fill="white" />
+          </svg>
+          <h1 class="website-name" id="website-name">JobFinder</h1>
+        </div>
+        <nav class="nav-menu">
+          <a href="#" class="nav-link">Trang chủ</a>
+          <a href="#" class="nav-link">Việc làm</a>
+          <a href="#" class="nav-link">Ứng viên</a>
+          <a href="#" class="nav-link">Liên hệ</a>
+        </nav>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main class="container">
+      <h2 class="page-title" id="page-title">
+        Đánh giá &amp; Phản hồi của người dùng
+      </h2>
+      <!-- Reviews Grid -->
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-header">
+            <div class="avatar">NT</div>
+            <div class="reviewer-info">
+              <h3>Nguyễn Thị Lan</h3>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p class="review-content">
+            Website rất dễ sử dụng, tôi đã tìm được công việc phù hợp chỉ sau 2
+            tuần. Giao diện đẹp và thông tin rất chi tiết!
+          </p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="avatar">TM</div>
+            <div class="reviewer-info">
+              <h3>Trần Minh Hoàng</h3>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p class="review-content">
+            Hệ thống tìm kiếm nhanh chóng, nhiều cơ hội việc làm chất lượng. Đội
+            ngũ hỗ trợ rất nhiệt tình và chuyên nghiệp.
+          </p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="avatar">PH</div>
+            <div class="reviewer-info">
+              <h3>Phạm Hương Giang</h3>
+              <div class="stars">★★★★☆</div>
+            </div>
+          </div>
+          <p class="review-content">
+            Nền tảng tốt cho người tìm việc. Có thể cải thiện thêm tính năng lọc
+            công việc theo kỹ năng cụ thể hơn.
+          </p>
+        </div>
+      </div>
+      <!-- Feedback Form -->
+      <section class="feedback-form-section">
+        <div id="success-message" class="success-message">
+          Cảm ơn bạn đã gửi đánh giá! Phản hồi của bạn rất quan trọng với chúng
+          tôi.
+        </div>
+        <h3 class="form-title" id="form-title">Gửi đánh giá của bạn</h3>
+        <form id="feedback-form">
+          <div class="form-group">
+            <label for="name" class="form-label">Họ và tên</label>
+            <input
+              type="text"
+              id="name"
+              class="form-input"
+              placeholder="Nhập họ tên của bạn"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-input"
+              placeholder="example@email.com"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="review" class="form-label">Nội dung đánh giá</label>
+            <textarea
+              id="review"
+              class="form-textarea"
+              placeholder="Chia sẻ trải nghiệm của bạn..."
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Đánh giá của bạn</label>
+            <div class="star-rating">
+              <input type="radio" id="star5" name="rating" value="5" required />
+              <label for="star5">★</label>
+              <input type="radio" id="star4" name="rating" value="4" />
+              <label for="star4">★</label>
+              <input type="radio" id="star3" name="rating" value="3" />
+              <label for="star3">★</label>
+              <input type="radio" id="star2" name="rating" value="2" />
+              <label for="star2">★</label>
+              <input type="radio" id="star1" name="rating" value="1" />
+              <label for="star1">★</label>
+            </div>
+          </div>
+          <button type="submit" class="submit-button" id="submit-button">
+            Gửi phản hồi
+          </button>
+        </form>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook">
+            <svg width="24" height="24" viewbox="0 0 24 24" fill="currentColor">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+              /></svg
+          ></a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg width="24" height="24" viewbox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+              /></svg
+          ></a>
+          <a href="#" class="social-link" aria-label="GitHub">
+            <svg width="24" height="24" viewbox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+              /></svg
+          ></a>
+        </div>
+        <p class="copyright" id="copyright-text">
+          © 2024 JobFinder. All rights reserved.
+        </p>
+      </div>
+    </footer>
+    <script>
+      const defaultConfig = {
+        website_name: "JobFinder",
+        page_title: "Đánh giá & Phản hồi của người dùng",
+        form_title: "Gửi đánh giá của bạn",
+        submit_button_text: "Gửi phản hồi",
+        copyright_text: "© 2024 JobFinder. All rights reserved.",
+        background_color: "#f5f7fa",
+        primary_color: "#2563eb",
+        text_color: "#1e293b",
+        card_background: "#ffffff",
+        accent_color: "#fbbf24",
+        font_family: "Segoe UI",
+        font_size: 16,
+      };
+
+      async function onConfigChange(config) {
+        const websiteName = document.getElementById("website-name");
+        const pageTitle = document.getElementById("page-title");
+        const formTitle = document.getElementById("form-title");
+        const submitButton = document.getElementById("submit-button");
+        const copyrightText = document.getElementById("copyright-text");
+
+        if (websiteName)
+          websiteName.textContent =
+            config.website_name || defaultConfig.website_name;
+        if (pageTitle)
+          pageTitle.textContent = config.page_title || defaultConfig.page_title;
+        if (formTitle)
+          formTitle.textContent = config.form_title || defaultConfig.form_title;
+        if (submitButton)
+          submitButton.textContent =
+            config.submit_button_text || defaultConfig.submit_button_text;
+        if (copyrightText)
+          copyrightText.textContent =
+            config.copyright_text || defaultConfig.copyright_text;
+
+        const customFont = config.font_family || defaultConfig.font_family;
+        const baseFontStack = "Tahoma, Geneva, Verdana, sans-serif";
+        document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+
+        const baseSize = config.font_size || defaultConfig.font_size;
+        document.body.style.fontSize = `${baseSize}px`;
+
+        const style = document.createElement("style");
+        style.textContent = `
+        .website-name { font-size: ${baseSize * 1.5}px !important; }
+        .page-title { font-size: ${baseSize * 2.5}px !important; }
+        .form-title { font-size: ${baseSize * 1.8}px !important; }
+        .reviewer-info h3 { font-size: ${baseSize * 1.1}px !important; }
+        .review-content { font-size: ${baseSize * 0.95}px !important; }
+        .form-label { font-size: ${baseSize * 0.95}px !important; }
+        .copyright { font-size: ${baseSize * 0.9}px !important; }
+      `;
+        document.head.appendChild(style);
+
+        const backgroundColor =
+          config.background_color || defaultConfig.background_color;
+        document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, #e8ecf1 100%)`;
+
+        const primaryColor =
+          config.primary_color || defaultConfig.primary_color;
+        const headers = document.querySelectorAll(".header");
+        headers.forEach((header) => {
+          header.style.background = `linear-gradient(135deg, ${primaryColor} 0%, #1e40af 100%)`;
+        });
+
+        const submitBtn = document.querySelector(".submit-button");
+        if (submitBtn) {
+          submitBtn.style.background = `linear-gradient(135deg, ${primaryColor} 0%, #1e40af 100%)`;
+        }
+
+        const textColor = config.text_color || defaultConfig.text_color;
+        const textElements = document.querySelectorAll(
+          ".page-title, .form-title, .reviewer-info h3"
+        );
+        textElements.forEach((el) => {
+          el.style.color = textColor;
+        });
+
+        const cardBackground =
+          config.card_background || defaultConfig.card_background;
+        const cards = document.querySelectorAll(
+          ".review-card, .feedback-form-section"
+        );
+        cards.forEach((card) => {
+          card.style.background = cardBackground;
+        });
+
+        const accentColor = config.accent_color || defaultConfig.accent_color;
+        const stars = document.querySelectorAll(".stars");
+        stars.forEach((star) => {
+          star.style.color = accentColor;
+        });
+      }
+
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities: (config) => ({
+            recolorables: [
+              {
+                get: () =>
+                  config.background_color || defaultConfig.background_color,
+                set: (value) => {
+                  config.background_color = value;
+                  window.elementSdk.setConfig({ background_color: value });
+                },
+              },
+              {
+                get: () =>
+                  config.card_background || defaultConfig.card_background,
+                set: (value) => {
+                  config.card_background = value;
+                  window.elementSdk.setConfig({ card_background: value });
+                },
+              },
+              {
+                get: () => config.text_color || defaultConfig.text_color,
+                set: (value) => {
+                  config.text_color = value;
+                  window.elementSdk.setConfig({ text_color: value });
+                },
+              },
+              {
+                get: () => config.primary_color || defaultConfig.primary_color,
+                set: (value) => {
+                  config.primary_color = value;
+                  window.elementSdk.setConfig({ primary_color: value });
+                },
+              },
+              {
+                get: () => config.accent_color || defaultConfig.accent_color,
+                set: (value) => {
+                  config.accent_color = value;
+                  window.elementSdk.setConfig({ accent_color: value });
+                },
+              },
+            ],
+            borderables: [],
+            fontEditable: {
+              get: () => config.font_family || defaultConfig.font_family,
+              set: (value) => {
+                config.font_family = value;
+                window.elementSdk.setConfig({ font_family: value });
+              },
+            },
+            fontSizeable: {
+              get: () => config.font_size || defaultConfig.font_size,
+              set: (value) => {
+                config.font_size = value;
+                window.elementSdk.setConfig({ font_size: value });
+              },
+            },
+          }),
+          mapToEditPanelValues: (config) =>
+            new Map([
+              [
+                "website_name",
+                config.website_name || defaultConfig.website_name,
+              ],
+              ["page_title", config.page_title || defaultConfig.page_title],
+              ["form_title", config.form_title || defaultConfig.form_title],
+              [
+                "submit_button_text",
+                config.submit_button_text || defaultConfig.submit_button_text,
+              ],
+              [
+                "copyright_text",
+                config.copyright_text || defaultConfig.copyright_text,
+              ],
+            ]),
+        });
+      }
+
+      document
+        .getElementById("feedback-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const successMessage = document.getElementById("success-message");
+          successMessage.classList.add("show");
+
+          this.reset();
+
+          setTimeout(() => {
+            successMessage.classList.remove("show");
+          }, 5000);
+        });
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9a40b87617fea978',t:'MTc2NDA2OTI0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
   </body>
 </html>
