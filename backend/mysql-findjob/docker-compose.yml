@@ -1,0 +1,42 @@
+services:
+  mysql:
+    container_name: mysql_new_2025
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-abcd1234}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-findjob_db}
+      MYSQL_USER: ${MYSQL_USER:-appuser}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-apppass123}
+    ports:
+      - '${MYSQL_PORT:-3307}:3306' # port host mới, tránh đụng cũ
+    volumes:
+      - mysql_new_data:/var/lib/mysql
+    networks:
+      - findjob_network # ← dùng đúng tên network ở dưới
+
+  phpmyadmin:
+    container_name: phpmyadmin_new_2025
+    image: phpmyadmin:latest
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    ports:
+      - '${PHPMYADMIN_PORT:-8081}:80'
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD:-abcd1234}
+    networks:
+      - findjob_network # ← cùng network
+
+# ──────────────────────────────────────────────
+# KHU VỰC KHAI BÁO NETWORK & VOLUME (bắt buộc phải có)
+networks:
+  findjob_network: # tên network đúng ở đây
+    driver: bridge
+    name: findjob_network # tuỳ chọn, để dễ thấy trong Docker Desktop
+
+volumes:
+  mysql_new_data: # volume hoàn toàn mới, không đụng cũ
+    name: mysql_new_data
